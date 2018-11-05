@@ -1,17 +1,16 @@
 #!/bin/bash
-
 vgaMonitor='DP-2-3'
 dviMonitor='DP-2-2'
 notebookMonitor='eDP-1'
 
 vgaMonitorModeName='DELL_P2210f'
-vgaMonitorMode="\"$vgaMonitorModeName\""'  132.75  1680 1776 1952 2224  1050 1053 1059 1086 -hsync +vsync'
+vgaMonitorMode="$vgaMonitorModeName  132.75  1680 1776 1952 2224  1050 1053 1059 1086 -hsync +vsync"
 
 if [ -n "`xrandr --listactivemonitors | grep "$vgaMonitor"`" ]; then
 	vgaMonCon=1
 	xrandr --newmode $vgaMonitorMode
-	xrandr --addmode "$vgaMonitor" "$vgaMonitorModeName"
-	xrandr --output "$vgaMonitor" --mode "$vgaMonitorModeName"
+	xrandr --addmode $vgaMonitor $vgaMonitorModeName
+	xrandr --output $vgaMonitor --mode $vgaMonitorModeName
 else
 	vgaMonCon=0
 fi
